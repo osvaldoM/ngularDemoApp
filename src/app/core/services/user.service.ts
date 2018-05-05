@@ -10,13 +10,20 @@ import {IUser} from '../models/user.model';
 
 @Injectable()
 export class UserService {
-  private _userUrl = 'https://randomuser.me/api/';
+  private _userUrl = 'https://randomuser.me/api/1.1/';
+  private fieldsToInclude = ['gender', 'name', 'phone', 'email'];
+  private numberOfUsersToLoad = 20;
+  private requestParams = {
+    'inc': this.fieldsToInclude.join(','),
+    'noinfo': '',
+    'results': this.numberOfUsersToLoad
+  };
 
-  constructor(private _http: Http) {}
+  constructor(private _http: Http) {
+  }
 
   private extractUsers(response: Response): IUser[] {
     const results: any[] = response.json().results;
-
     const transformedResults = results.map((user) => {
       return {
         'gender': user.gender,
@@ -30,8 +37,9 @@ export class UserService {
   }
 
   getUsers(): Observable<IUser[]> {
-    console.log('retrieving user');
-    return this._http.get(this._userUrl)
+    return this._http.get(this._userUrl, {
+      params: this.requestParams
+    })
       .map((response: Response) => this.extractUsers(response))
       .do(data => console.log(JSON.stringify(data)))
       .catch(this.handleError);
@@ -40,4 +48,5 @@ export class UserService {
   private handleError(error: Response) {
     console.error(error);
     return Observable.throw(error.json().error());
-  }}
+  }
+}
