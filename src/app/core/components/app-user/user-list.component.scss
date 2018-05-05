@@ -27,4 +27,14 @@
 
 .gender {
   float: right;
+  color: #663FB4;
+  font-size: x-large;
+}
+
+.female::before {
+  content: '\2640';
+}
+
+.male::before {
+  content: '\2642';
 }

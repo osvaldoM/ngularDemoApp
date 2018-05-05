@@ -2,7 +2,7 @@
   <div class="card user" *ngFor='let user of iusers'>
     <div class="content">
       <p class="card-title"> {{user.firstName +' '+ user.lastName | titlecase}}
-        <span class="gender">{{user.gender}}</span></p>
+        <i class="gender {{user.gender}}"></i></p>
       <p>{{user.email}}</p>
       <p>{{user.phone}}</p>
     </div>
