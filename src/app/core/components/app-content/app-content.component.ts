@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user.model';
+import { IUser } from '../../models/user.model';
 
 @Component({
   selector: 'ng-e-app-content',
@@ -7,9 +7,11 @@ import { User } from '../../models/user.model';
   styleUrls: ['./app-content.component.scss']
 })
 export class AppContentComponent implements OnInit {
-  user: User = {
+  user: IUser = {
     firstName: 'Ahsan',
-    lastName: 'Ayaz'
+    lastName: 'Ayaz',
+    email: 'ayaz@mail.com',
+    phone: '+25845695874'
   };
   isLoggedIn: boolean;
   constructor() { }
