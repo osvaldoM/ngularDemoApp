@@ -7,7 +7,8 @@ import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'ng-e-app-users',
-    templateUrl: 'user-list.component.html'
+    templateUrl: 'user-list.component.html',
+    styleUrls: ['./user-list.component.scss']
 })
 
 export class UserComponent implements OnInit {
