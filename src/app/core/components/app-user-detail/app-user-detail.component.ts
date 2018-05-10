@@ -5,21 +5,20 @@ import {IUser} from '../../models/user.model';
 import {UserService} from '../../services/user.service';
 
 @Component({
-  selector: 'ng-e-app-users',
-  templateUrl: 'user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  selector: 'ng-e-app-user',
+  templateUrl: 'app-user-detail.component.html',
+  styleUrls: ['./app-user-detail.component.scss']
 })
 
-export class UserComponent implements OnInit {
+export class UserDetailComponent implements OnInit {
   iusers: IUser[];
   private fieldsToInclude = ['gender', 'name', 'phone', 'email'];
-  private numberOfUsersToLoad = 20;
+  private numberOfUsersToLoad = 1;
   private requestParams = {
     'inc': this.fieldsToInclude.join(','),
     'noinfo': '',
     'results': this.numberOfUsersToLoad
   };
-
   constructor(private _user: UserService) {
   }
 

@@ -11,13 +11,6 @@ import {IUser} from '../models/user.model';
 @Injectable()
 export class UserService {
   private _userUrl = 'https://randomuser.me/api/1.1/';
-  private fieldsToInclude = ['gender', 'name', 'phone', 'email'];
-  private numberOfUsersToLoad = 20;
-  private requestParams = {
-    'inc': this.fieldsToInclude.join(','),
-    'noinfo': '',
-    'results': this.numberOfUsersToLoad
-  };
 
   constructor(private _http: Http) {
   }
@@ -36,9 +29,9 @@ export class UserService {
     return <IUser[]> transformedResults;
   }
 
-  getUsers(): Observable<IUser[]> {
+  getUsers(requestParams: Object): Observable<IUser[]> {
     return this._http.get(this._userUrl, {
-      params: this.requestParams
+      params: requestParams
     })
       .map((response: Response) => this.extractUsers(response))
       .do(data => console.log(JSON.stringify(data)))
