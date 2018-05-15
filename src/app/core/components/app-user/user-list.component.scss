@@ -1,6 +1,6 @@
 .user {
   background: white;
-  min-width: 20vw;
+  min-width: 22.5vw;
   margin: 1vw;
 }
 
@@ -37,4 +37,8 @@
 
 .male::before {
   content: '\2642';
+}
+
+.user-link {
+  text-decoration: none;
 }

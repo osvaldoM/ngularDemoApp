@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import 'rxjs/add/operator/map';
-
+import {Router, ActivatedRoute} from '@angular/router';
 import {IUser} from '../../models/user.model';
 import {UserService} from '../../services/user.service';
 
@@ -12,17 +12,22 @@ import {UserService} from '../../services/user.service';
 
 export class UserDetailComponent implements OnInit {
   iusers: IUser[];
-  private fieldsToInclude = ['gender', 'name', 'phone', 'email'];
+  private fieldsToInclude = ['gender', 'name', 'phone', 'email', 'picture'];
   private numberOfUsersToLoad = 1;
   private requestParams = {
     'inc': this.fieldsToInclude.join(','),
     'noinfo': '',
-    'results': this.numberOfUsersToLoad
+    'results': this.numberOfUsersToLoad,
+    'seed': ''
   };
-  constructor(private _user: UserService) {
+
+  constructor(private _user: UserService,
+              private _router: Router,
+              private  _activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.requestParams.seed = this._activatedRoute.snapshot.params['id'];
     this._user.getUsers(this.requestParams)
       .subscribe(iusers => this.iusers = iusers);
   }

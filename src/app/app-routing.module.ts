@@ -14,7 +14,7 @@ const routes: Routes = [{
   component: HomeComponent,
   children: [
     {path: 'users', component: UserComponent},
-    {path: 'users/details', component: UserDetailComponent},
+    {path: 'users/details/:id', component: UserDetailComponent},
     {path: '**', redirectTo: 'users'}
   ]
 }, {

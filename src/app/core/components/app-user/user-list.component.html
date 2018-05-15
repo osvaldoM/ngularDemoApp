@@ -1,8 +1,12 @@
 <div>
   <div class="card user" *ngFor='let user of iusers'>
     <div class="content">
-      <p class="card-title"> {{user.firstName +' '+ user.lastName | titlecase}}
-        <i class="gender {{user.gender}}"></i></p>
+      <p class="card-title">
+        <a class="user-link" [routerLink]="['details',user.lastName]">
+          {{user.firstName +' '+ user.lastName | titlecase}}
+          <i class="gender {{user.gender}}"></i>
+        </a>
+      </p>
       <p>{{user.email}}</p>
       <p>{{user.phone}}</p>
     </div>

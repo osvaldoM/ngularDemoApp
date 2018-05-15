@@ -20,10 +20,11 @@ export class UserService {
     const transformedResults = results.map((user) => {
       return {
         'gender': user.gender,
-        'firstName': user.name.first,
-        'lastName': user.name.last,
-        'phone': user.phone,
-        'email': user.email
+        'firstName': user.name.first || '',
+        'lastName': user.name.last || '',
+        'phone': user.phone || '',
+        'email': user.email || '',
+        'picture': user.picture && user.picture.large || ''
       };
     });
     return <IUser[]> transformedResults;

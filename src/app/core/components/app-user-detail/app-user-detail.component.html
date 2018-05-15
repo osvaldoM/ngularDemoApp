@@ -1,10 +1,15 @@
-<div *ngFor='let user of iusers'>
-  <img src="card-image" alt="user image" src="http://via.placeholder.com/350x150">
-  <div class="card user">
-    <div class="content">
-      <p class="card-title"> {{user.firstName +' '+ user.lastName | titlecase}} <span class="gender">{{user.gender}}</span></p>
-      <p>{{user.email}}</p>
-      <p>{{user.phone}}</p>
+<div>
+  <div class="card single-user" *ngFor='let user of iusers'>
+    <img class="card-image" alt="user image" [src]="user.picture">
+    <div class="card user">
+      <div class="content">
+        <p class="card-title">
+          {{user.firstName +' '+ user.lastName | titlecase}}
+          <i class="gender {{user.gender}}"></i>
+        </p>
+        <p>{{user.email}}</p>
+        <p>{{user.phone}}</p>
+      </div>
     </div>
   </div>
 </div>
