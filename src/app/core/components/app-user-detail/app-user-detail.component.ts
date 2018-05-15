@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import {Router, ActivatedRoute} from '@angular/router';
 import {IUser} from '../../models/user.model';
 import {UserService} from '../../services/user.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'ng-e-app-user',
@@ -23,13 +24,18 @@ export class UserDetailComponent implements OnInit {
 
   constructor(private _user: UserService,
               private _router: Router,
-              private  _activatedRoute: ActivatedRoute) {
+              private  _activatedRoute: ActivatedRoute,
+              private _location: Location) {
   }
 
   ngOnInit(): void {
     this.requestParams.seed = this._activatedRoute.snapshot.params['id'];
     this._user.getUsers(this.requestParams)
       .subscribe(iusers => this.iusers = iusers);
+  }
+
+  goBack() {
+    this._location.back();
   }
 }
 

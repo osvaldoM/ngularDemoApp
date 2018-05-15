@@ -1,4 +1,5 @@
 <div>
+  <button class="back-button" (click)="goBack()"> <i  class="back-icon"></i> Go back </button>
   <div class="card single-user" *ngFor='let user of iusers'>
     <img class="card-image" alt="user image" [src]="user.picture">
     <div class="card user">
