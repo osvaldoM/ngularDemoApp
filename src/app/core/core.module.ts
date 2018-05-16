@@ -8,6 +8,7 @@ import { UserDetailComponent } from './components/app-user-detail/app-user-detai
 import { RouterModule } from '@angular/router';
 import { AppService } from './services/app.service';
 import { UserService } from './services/user.service';
+import {AuthService} from './services/auth.service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { UserService } from './services/user.service';
   declarations: [AppHeaderComponent, AppContentComponent, UserComponent, UserDetailComponent],
   exports: [AppHeaderComponent, AppContentComponent, UserComponent, UserDetailComponent],
   providers: [
-    AppService, UserService
+    AppService, UserService, AuthService
   ]
 })
 export class CoreModule { }

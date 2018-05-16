@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from '../../models/user.model';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'ng-e-app-header',
@@ -14,10 +15,10 @@ export class AppHeaderComponent implements OnInit {
     phone: '+25845695874'
   };
   isLoggedIn: boolean;
-  constructor() { }
+  constructor(private _authService: AuthService) { }
 
   ngOnInit() {
-    this.isLoggedIn = false;
+    this._authService.isLoggedIn.subscribe(status => this.isLoggedIn = status);
   }
 
   /**
@@ -25,7 +26,7 @@ export class AppHeaderComponent implements OnInit {
    * @desc Logs the user in
    */
   login() {
-    this.isLoggedIn = true;
+    this._authService.toggleAuthStatus(true);
   }
 
   /**
@@ -33,7 +34,7 @@ export class AppHeaderComponent implements OnInit {
    * @desc Logs the user in
    */
   signup() {
-    this.isLoggedIn = true;
+    this._authService.toggleAuthStatus(true);
   }
 
   /**
@@ -41,7 +42,7 @@ export class AppHeaderComponent implements OnInit {
    * @desc Logs the user out
    */
   logout() {
-    this.isLoggedIn = false;
+    this._authService.toggleAuthStatus(false);
   }
 
 }
