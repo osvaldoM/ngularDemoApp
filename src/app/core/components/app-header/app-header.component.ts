@@ -26,7 +26,7 @@ export class AppHeaderComponent implements OnInit {
    * @desc Logs the user in
    */
   login() {
-    this._authService.toggleAuthStatus(true);
+    this._authService.changeAuthStatus(true);
   }
 
   /**
@@ -34,7 +34,7 @@ export class AppHeaderComponent implements OnInit {
    * @desc Logs the user in
    */
   signup() {
-    this._authService.toggleAuthStatus(true);
+    this._authService.changeAuthStatus(true);
   }
 
   /**
@@ -42,7 +42,7 @@ export class AppHeaderComponent implements OnInit {
    * @desc Logs the user out
    */
   logout() {
-    this._authService.toggleAuthStatus(false);
+    this._authService.changeAuthStatus(false);
   }
 
 }

@@ -9,7 +9,7 @@ export class AuthService {
 
   constructor() { }
 
-  toggleAuthStatus(status) {
+  changeAuthStatus(status) {
     this.authSource.next(status);
   }
 
