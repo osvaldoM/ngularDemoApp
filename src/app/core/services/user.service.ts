@@ -35,7 +35,6 @@ export class UserService {
       params: requestParams
     })
       .map((response: Response) => this.extractUsers(response))
-      .do(data => console.log(JSON.stringify(data)))
       .catch(this.handleError);
   }
 

@@ -1,9 +1,9 @@
 import {AuthService} from './auth.service';
 import {bufferCount} from 'rxjs/operators';
 
-describe('Service: Authentication service', () => {
+describe('Authentication service', () => {
   let authService: AuthService;
-  beforeAll(() => {
+  beforeEach(() => {
     authService = new AuthService();
   });
   it('#changeAuthStatus, should change the authentication status ', () => {
