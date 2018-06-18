@@ -1,36 +1,36 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { UserComponent } from './user-list.component';
-import {RouterLinkStubDirective} from "../../../testing/router-link-directive-stub";
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {UserComponent} from './user-list.component';
 import {By} from "@angular/platform-browser";
-import { RouterTestingModule } from '@angular/router/testing';
+import {RouterTestingModule} from '@angular/router/testing';
 import {UserService} from "../../services/user.service";
 import {TestUserService} from "../../../testing/TestUserService.service";
 
 let component: UserComponent;
 let fixture: ComponentFixture<UserComponent>;
-let linkDes,
-  routerLinks;
 
 fdescribe('UserListComponent ', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ RouterLinkStubDirective, UserComponent],
+      declarations: [UserComponent],
       providers: [{provide: UserService, useClass: TestUserService}]
     }).compileComponents();
     fixture = TestBed.createComponent(UserComponent);
     component = fixture.componentInstance;
-    linkDes = fixture.debugElement
-      .queryAll(By.directive(RouterLinkStubDirective));
-
-    routerLinks = linkDes.map(de => de.injector.get(RouterLinkStubDirective));
-
   });
 
+  it('should have link to userDetails', () => {
+    let routerLinks;
+
+    routerLinks = fixture.debugElement
+      .queryAll(By.directive(RouterTestingModule));
+
+    console.log('bro', routerLinks);
+  });
 
   it('should create', () => {
     expect(component).toBeDefined();
-    expect(component.iusers).toBe(undefined);
+    expect(component.iusers).not.toBeDefined();
   });
   it('should render list of users in the DOM', () => {
     let userElements;

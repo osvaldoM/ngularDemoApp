@@ -1,18 +1,15 @@
 import {UserService} from './user.service';
 import {Http, Response} from '@angular/http';
 import {asyncData} from '../../testing/async-observable-helpers';
-import {getSingleUser, getUsers} from '../../testing/data/fake-users';
+import {getUsers} from '../../testing/data/fake-users';
 
 
 fdescribe('UserService', () => {
   let httpClientSpy: { get: jasmine.Spy };
   let userService: UserService;
   const usersStub = {
-    json: function () {
-      return getUsers;
-    }
-  };
-
+    json: getUsers
+    };
 
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('Http', ['get']);
@@ -27,11 +24,9 @@ fdescribe('UserService', () => {
     });
   });
   it('should return a single user', function () {
-    const singleUser = getSingleUser();
-    httpClientSpy.get.and.returnValue(asyncData(singleUser));
+    httpClientSpy.get.and.returnValue(asyncData(usersStub));
     userService.getUsers({}).subscribe(users => {
-      expect(users[0].email).toEqual(singleUser.results[0].email);
-      expect(users[1]).not.toBeUndefined();
+      expect(users[0].email).toEqual(getUsers().results[0].email);
     });
   });
 });

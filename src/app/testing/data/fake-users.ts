@@ -50,13 +50,6 @@ const fakeUsers = [
         'phone': '015-69948635'
       }
     ];
-
-  export function  getSingleUser() {
-    const randomPositionInArray = Math.floor(Math.random() * Math.floor(fakeUsers.length));
-    return {
-      results: [fakeUsers[randomPositionInArray]]
-    };
-  }
   export function getUsers() {
     return {
       results: fakeUsers
