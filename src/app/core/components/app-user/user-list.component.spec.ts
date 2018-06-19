@@ -1,9 +1,9 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {UserComponent} from './user-list.component';
-import {By} from "@angular/platform-browser";
+import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
-import {UserService} from "../../services/user.service";
-import {TestUserService} from "../../../testing/TestUserService.service";
+import {UserService} from '../../services/user.service';
+import {TestUserService} from '../../../testing/TestUserService.service';
 
 let component: UserComponent;
 let fixture: ComponentFixture<UserComponent>;
